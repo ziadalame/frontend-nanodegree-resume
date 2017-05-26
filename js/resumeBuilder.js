@@ -78,12 +78,12 @@ var education = {
         }
     ],
     display: function () {
-        for (var i = 0; education.schools.length > i; i++) {
+        for (var a = 0; education.schools.length > a; a++) {
             // Add content to HTML
-            var formattedName = HTMLschoolName.replace(replacableDataString, education.schools[i].name);
-            var formattedDegree = HTMLschoolDegree.replace(replacableDataString, education.schools[i].degree);
-            var formattedSchoolDates = HTMLschoolDates.replace(replacableDataString, education.schools[i].dates);
-            var formattedLocation = HTMLschoolLocation.replace(replacableDataString, education.schools[i].location);
+            var formattedName = HTMLschoolName.replace(replacableDataString, education.schools[a].name);
+            var formattedDegree = HTMLschoolDegree.replace(replacableDataString, education.schools[a].degree);
+            var formattedSchoolDates = HTMLschoolDates.replace(replacableDataString, education.schools[a].dates);
+            var formattedLocation = HTMLschoolLocation.replace(replacableDataString, education.schools[a].location);
 
             // Add education entry div
             $('#education').append(HTMLschoolStart);
@@ -94,9 +94,9 @@ var education = {
             $('.education-entry:last').append(formattedLocation);
 
             // loop over majors
-            for (var j = 0; education.schools[i].majors.length > j; j++) {
+            for (var j = 0; education.schools[a].majors.length > j; j++) {
                 // add content to HTML tag
-                var formattedMajor = HTMLschoolMajor.replace(replacableDataString, education.schools[i].majors[j]);
+                var formattedMajor = HTMLschoolMajor.replace(replacableDataString, education.schools[a].majors[j]);
                 // Apped content
                 $('.education-entry:last').append(formattedMajor);
             }
@@ -107,12 +107,12 @@ var education = {
             $('#education').append(HTMLonlineClasses);
 
             // loop over online courses
-            for (var i = 0; education.onlineCourses.length > i; i++) {
+            for (var b = 0; education.onlineCourses.length > b; b++) {
                 // add content to HTML tags
-                var formattedTitle = HTMLonlineTitle.replace(replacableDataString, education.onlineCourses[i].title).replace('#', education.onlineCourses[i].url);
-                var formattedSchool = HTMLonlineSchool.replace(replacableDataString, education.onlineCourses[i].school);
-                var formattedOnlineDates = HTMLonlineDates.replace(replacableDataString, education.onlineCourses[i].dates);
-                var formattedUrl = HTMLonlineURL.replace(replacableDataString, education.onlineCourses[i].url);
+                var formattedTitle = HTMLonlineTitle.replace(replacableDataString, education.onlineCourses[b].title).replace('#', education.onlineCourses[b].url);
+                var formattedSchool = HTMLonlineSchool.replace(replacableDataString, education.onlineCourses[b].school);
+                var formattedOnlineDates = HTMLonlineDates.replace(replacableDataString, education.onlineCourses[b].dates);
+                var formattedUrl = HTMLonlineURL.replace(replacableDataString, education.onlineCourses[b].url);
 
                 // Add an education entry div
                 $('#education').append(HTMLschoolStart);
@@ -144,14 +144,14 @@ var work = {
         }
     ],
     display: function () {
-        for (var i = 0; work.jobs.length > i; i++) {
+        for (var c = 0; work.jobs.length > c; c++) {
 
             // Change data
-            var formattedEmployer = HTMLworkEmployer.replace(replacableDataString, work.jobs[i].employer);
-            var formattedTitle = HTMLworkTitle.replace(replacableDataString, work.jobs[i].title);
-            var formattedDates = HTMLworkDates.replace(replacableDataString, work.jobs[i].dates);
-            var formattedLocation = HTMLworkLocation.replace(replacableDataString, work.jobs[i].location);
-            var formattedDescription = HTMLworkDescription.replace(replacableDataString, work.jobs[i].description);
+            var formattedEmployer = HTMLworkEmployer.replace(replacableDataString, work.jobs[c].employer);
+            var formattedTitle = HTMLworkTitle.replace(replacableDataString, work.jobs[c].title);
+            var formattedDates = HTMLworkDates.replace(replacableDataString, work.jobs[c].dates);
+            var formattedLocation = HTMLworkLocation.replace(replacableDataString, work.jobs[c].location);
+            var formattedDescription = HTMLworkDescription.replace(replacableDataString, work.jobs[c].description);
 
             // Appende work entry
             $('#workExperience').append(HTMLworkStart);
@@ -182,12 +182,12 @@ var projects = {
         }
     ],
     display: function () {
-        for (var i = 0; projects.projects.length > i; i++) {
+        for (var p = 0; projects.projects.length > p; p++) {
 
             // Add data to HTML tags
-            var formattedTitle = HTMLprojectTitle.replace(replacableDataString, projects.projects[i].title);
-            var formattedDescription = HTMLprojectDescription.replace(replacableDataString, projects.projects[i].description);
-            var formattedDates = HTMLprojectDates.replace(replacableDataString, projects.projects[i].dates);
+            var formattedTitle = HTMLprojectTitle.replace(replacableDataString, projects.projects[p].title);
+            var formattedDescription = HTMLprojectDescription.replace(replacableDataString, projects.projects[p].description);
+            var formattedDates = HTMLprojectDates.replace(replacableDataString, projects.projects[p].dates);
 
             // Add preojects entry
             $('#projects').append(HTMLprojectStart);
@@ -197,9 +197,9 @@ var projects = {
             $('.project-entry:last').append(formattedDates);
             $('.project-entry:last').append(formattedDescription);
 
-            for (var j = 0, jLen = projects.projects[i].images.length; j < jLen; j++) {
+            for (var f = 0; projects.projects[p].images.length > f; f++) {
                 // Add data to html
-                var formattedImage = HTMLprojectImage.replace(replacableDataString, projects.projects[i].images[j]);
+                var formattedImage = HTMLprojectImage.replace(replacableDataString, projects.projects[p].images[f]);
                 // Append HTML to project entry
                 $('.project-entry:last').append(formattedImage);
             }
@@ -212,7 +212,7 @@ var map = {
         // Add map to screen
         $('#mapDiv').append(googleMap);
     }
-}
+};
 
 // Add sections to page
 bio.display();
