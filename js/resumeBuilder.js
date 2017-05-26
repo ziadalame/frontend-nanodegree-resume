@@ -132,10 +132,54 @@ var education = {
     }
 };
 
-// TODO: Add work
+var work = {
+    jobs: [
+        {
+            employer: 'FIG',
+            title: 'VP of Product',
+            location: 'Beirut Lebanon',
+            dates: 'January 2017 - Present',
+            description: 'I am responsible for delivering a functinal product that satisfies requirements. The product should be tested and ready to use.'
+        },
+        {
+            employer: 'GIVINGLOOP',
+            title: 'Co-Founder',
+            location: 'Beirut Lebanon',
+            dates: 'June 2016 - March 2017',
+            description: 'I was responsible for product and feature strategy. In addition to that I managed a team of developers who were responsible to build the product.'
+        }
+    ],
+    display: function () {
+        // Check if work experience has any jobs within
+        if (work.jobs.length) {
+            for (var i = 0; work.jobs.length > i; i++) {
+
+                // Change data
+                var formattedEmployer = HTMLworkEmployer.replace(replacableDataString, work.jobs[i].employer);
+                var formattedTitle = HTMLworkTitle.replace(replacableDataString, work.jobs[i].title);
+                var formattedDates = HTMLworkDates.replace(replacableDataString, work.jobs[i].dates);
+                var formattedLocation = HTMLworkLocation.replace(replacableDataString, work.jobs[i].location);
+                var formattedDescription = HTMLworkDescription.replace(replacableDataString, work.jobs[i].description);
+
+                // Appende work entry
+                $('#workExperience').append(HTMLworkStart);
+                
+                // Append work after the last work entry - :last is inspired from the example in the requirements
+                $('.work-entry:last').append(formattedEmployer + formattedTitle);
+                $('.work-entry:last').append(formattedDates);
+                $('.work-entry:last').append(formattedLocation);
+                $('.work-entry:last').append(formattedDescription);
+            } 
+        } else {
+            // remove work experience section content if no jobs
+            $('#workExperience').html('');
+        }
+    }
+};
 
 // TODO: Add projects
 
 // Add sections to page
 bio.display();
 education.display();
+work.display();
