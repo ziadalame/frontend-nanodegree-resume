@@ -17,7 +17,7 @@ var bio = {
     },
     welcomeMessage: 'Welcome, Bienvenue, Welkom, Καλός ήλθατε, أهلاً وسهلاً. I am Ziad, and I am w web enthusiast from Beirut, Lebanon',
     skills: ['HTML', 'CSS', 'JavaScript', 'Problem Solving'],
-    biopic: 'images/fry.jpg',
+    biopic: 'https://avatars2.githubusercontent.com/u/4019318',
     display: function () {
 
         /*
@@ -78,40 +78,34 @@ var education = {
         }
     ],
     display: function () {
-        // Check if education has at least one school or one online course to know whether to keep or remove education title
-        if (education.schools.length || education.onlineCourses.length) {
-            for (var i = 0; education.schools.length > i; i++) {
-                // Add content to HTML
-                var formattedName = HTMLschoolName.replace(replacableDataString, education.schools[i].name);
-                var formattedDegree = HTMLschoolDegree.replace(replacableDataString, education.schools[i].degree);
-                var formattedSchoolDates = HTMLschoolDates.replace(replacableDataString, education.schools[i].dates);
-                var formattedLocation = HTMLschoolLocation.replace(replacableDataString, education.schools[i].location);
+        for (var i = 0; education.schools.length > i; i++) {
+            // Add content to HTML
+            var formattedName = HTMLschoolName.replace(replacableDataString, education.schools[i].name);
+            var formattedDegree = HTMLschoolDegree.replace(replacableDataString, education.schools[i].degree);
+            var formattedSchoolDates = HTMLschoolDates.replace(replacableDataString, education.schools[i].dates);
+            var formattedLocation = HTMLschoolLocation.replace(replacableDataString, education.schools[i].location);
 
-                // Add education entry div
-                $('#education').append(HTMLschoolStart);
+            // Add education entry div
+            $('#education').append(HTMLschoolStart);
 
-                // append school to education entries
-                $('.education-entry:last').append(formattedName + formattedDegree);
-                $('.education-entry:last').append(formattedSchoolDates);
-                $('.education-entry:last').append(formattedLocation);
+            // append school to education entries
+            $('.education-entry:last').append(formattedName + formattedDegree);
+            $('.education-entry:last').append(formattedSchoolDates);
+            $('.education-entry:last').append(formattedLocation);
 
-                // loop over majors
-                for (var j = 0; education.schools[i].majors.length > j; j++) {
-                    // add content to HTML tag
-                    var formattedMajor = HTMLschoolMajor.replace(replacableDataString, education.schools[i].majors[j]);
-                    // Apped content
-                    $('.education-entry:last').append(formattedMajor);
-                }
+            // loop over majors
+            for (var j = 0; education.schools[i].majors.length > j; j++) {
+                // add content to HTML tag
+                var formattedMajor = HTMLschoolMajor.replace(replacableDataString, education.schools[i].majors[j]);
+                // Apped content
+                $('.education-entry:last').append(formattedMajor);
             }
-        } else {
-            // remove the education h2 tag by emptying the div tag to avoid showing an empty education section
-            $('#education').html('');
         }
 
         // Check if education has at least one online course to add the title
         if (education.onlineCourses.length) {
             $('#education').append(HTMLonlineClasses);
-            
+
             // loop over online courses
             for (var i = 0; education.onlineCourses.length > i; i++) {
                 // add content to HTML tags
@@ -119,10 +113,10 @@ var education = {
                 var formattedSchool = HTMLonlineSchool.replace(replacableDataString, education.onlineCourses[i].school);
                 var formattedOnlineDates = HTMLonlineDates.replace(replacableDataString, education.onlineCourses[i].dates);
                 var formattedUrl = HTMLonlineURL.replace(replacableDataString, education.onlineCourses[i].url);
-                
+
                 // Add an education entry div
                 $('#education').append(HTMLschoolStart);
-                
+
                 // Add education data to entry
                 $('.education-entry:last').append(formattedTitle + formattedSchool);
                 $('.education-entry:last').append(formattedOnlineDates);
@@ -144,42 +138,85 @@ var work = {
         {
             employer: 'GIVINGLOOP',
             title: 'Co-Founder',
-            location: 'Beirut Lebanon',
+            location: 'Beirut, Lebanon',
             dates: 'June 2016 - March 2017',
             description: 'I was responsible for product and feature strategy. In addition to that I managed a team of developers who were responsible to build the product.'
         }
     ],
     display: function () {
-        // Check if work experience has any jobs within
-        if (work.jobs.length) {
-            for (var i = 0; work.jobs.length > i; i++) {
+        for (var i = 0; work.jobs.length > i; i++) {
 
-                // Change data
-                var formattedEmployer = HTMLworkEmployer.replace(replacableDataString, work.jobs[i].employer);
-                var formattedTitle = HTMLworkTitle.replace(replacableDataString, work.jobs[i].title);
-                var formattedDates = HTMLworkDates.replace(replacableDataString, work.jobs[i].dates);
-                var formattedLocation = HTMLworkLocation.replace(replacableDataString, work.jobs[i].location);
-                var formattedDescription = HTMLworkDescription.replace(replacableDataString, work.jobs[i].description);
+            // Change data
+            var formattedEmployer = HTMLworkEmployer.replace(replacableDataString, work.jobs[i].employer);
+            var formattedTitle = HTMLworkTitle.replace(replacableDataString, work.jobs[i].title);
+            var formattedDates = HTMLworkDates.replace(replacableDataString, work.jobs[i].dates);
+            var formattedLocation = HTMLworkLocation.replace(replacableDataString, work.jobs[i].location);
+            var formattedDescription = HTMLworkDescription.replace(replacableDataString, work.jobs[i].description);
 
-                // Appende work entry
-                $('#workExperience').append(HTMLworkStart);
-                
-                // Append work after the last work entry - :last is inspired from the example in the requirements
-                $('.work-entry:last').append(formattedEmployer + formattedTitle);
-                $('.work-entry:last').append(formattedDates);
-                $('.work-entry:last').append(formattedLocation);
-                $('.work-entry:last').append(formattedDescription);
-            } 
-        } else {
-            // remove work experience section content if no jobs
-            $('#workExperience').html('');
+            // Appende work entry
+            $('#workExperience').append(HTMLworkStart);
+
+            // Append work after the last work entry - :last is inspired from the example in the requirements
+            $('.work-entry:last').append(formattedEmployer + formattedTitle);
+            $('.work-entry:last').append(formattedDates);
+            $('.work-entry:last').append(formattedLocation);
+            $('.work-entry:last').append(formattedDescription);
         }
     }
 };
 
-// TODO: Add projects
+
+var projects = {
+    projects: [
+        {
+            'title': 'Fig',
+            'dates': 'January 2017 - Present',
+            'description': 'A platform that makes offline product discovery easier',
+            'images': []
+        },
+        {
+            'title': 'GivingLoop',
+            'dates': 'June 2016 - March 2017',
+            'description': 'A platform that allows NGOs to raise online recurring donations and manage their donors',
+            'images': ['images/givingloop/gl1.png', 'images/givingloop/gl2.png', 'images/givingloop/gl3.png', 'images/givingloop/gl4.png', 'images/givingloop/gl5.png']
+        }
+    ],
+    display: function () {
+        for (var i = 0; projects.projects.length > i; i++) {
+
+            // Add data to HTML tags
+            var formattedTitle = HTMLprojectTitle.replace(replacableDataString, projects.projects[i].title);
+            var formattedDescription = HTMLprojectDescription.replace(replacableDataString, projects.projects[i].description);
+            var formattedDates = HTMLprojectDates.replace(replacableDataString, projects.projects[i].dates);
+
+            // Add preojects entry
+            $('#projects').append(HTMLprojectStart);
+
+            // Add content to entry
+            $('.project-entry:last').append(formattedTitle);
+            $('.project-entry:last').append(formattedDates);
+            $('.project-entry:last').append(formattedDescription);
+
+            for (var j = 0, jLen = projects.projects[i].images.length; j < jLen; j++) {
+                // Add data to html
+                var formattedImage = HTMLprojectImage.replace(replacableDataString, projects.projects[i].images[j]);
+                // Append HTML to project entry
+                $('.project-entry:last').append(formattedImage);
+            }
+        }
+    }
+};
+
+var map = {
+    display: function () {
+        // Add map to screen
+        $('#mapDiv').append(googleMap);
+    }
+}
 
 // Add sections to page
 bio.display();
 education.display();
 work.display();
+projects.display();
+map.display();
